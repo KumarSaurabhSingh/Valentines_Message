@@ -1,4 +1,4 @@
-/* 💖 INTRO SCREEN */
+/* 💖 INTRO SCREEN
 
 #intro-screen {
     position: fixed;
@@ -14,8 +14,8 @@
 
 #intro-screen.fade-out {
     opacity: 0;
-}
-
+} */
+/* 
 .intro-content {
     text-align: center;
     color: white;
@@ -35,7 +35,7 @@
 @keyframes pulse {
     0%,100% { transform: scale(1); }
     50% { transform: scale(1.05); }
-}
+} */
 
 /* LOVE POPUP */
 

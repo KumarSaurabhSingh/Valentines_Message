@@ -1,25 +1,28 @@
 /* ===============================
-   💖 INTRO SCREEN + MUSIC START
+   🎵 BACKGROUND MUSIC (Clean Version)
 ================================= */
 
-const introScreen = document.getElementById("intro-screen")
 const music = document.getElementById("bg-music")
 const musicToggle = document.getElementById("music-toggle")
 
 let musicPlaying = false
 
-introScreen.addEventListener("click", () => {
-    introScreen.classList.add("fade-out")
-
-    setTimeout(() => {
-        introScreen.style.display = "none"
-    }, 800)
-
+window.addEventListener("load", () => {
     music.volume = 0.3
+
+    // Try autoplay (browser may block it)
     music.play().then(() => {
         musicPlaying = true
         musicToggle.textContent = "🔊"
-    }).catch(() => {})
+    }).catch(() => {
+        // If blocked, allow first user interaction to start music
+        document.addEventListener("click", () => {
+            music.play().then(() => {
+                musicPlaying = true
+                musicToggle.textContent = "🔊"
+            })
+        }, { once: true })
+    })
 })
 
 function toggleMusic() {
@@ -33,6 +36,7 @@ function toggleMusic() {
         musicToggle.textContent = "🔊"
     }
 }
+
 
 /* ===============================
    💕 ORIGINAL GAME LOGIC
@@ -73,13 +77,19 @@ let yesClickCount = 0
 let noClickCount = 0
 let runawayEnabled = false
 
-const catGif = document.getElementById('cat-gif')
-const yesBtn = document.getElementById('yes-btn')
-const noBtn = document.getElementById('no-btn')
+const catGif = document.getElementById("cat-gif")
+const yesBtn = document.getElementById("yes-btn")
+const noBtn = document.getElementById("no-btn")
+
+
+/* ===============================
+   💖 YES BUTTON LOGIC
+================================= */
 
 function handleYesClick() {
     yesClickCount++
 
+    // Tease before enabling proper yes
     if (!runawayEnabled) {
         const msg = yesTeasePokes[Math.min(yesTeasedCount, yesTeasePokes.length - 1)]
         yesTeasedCount++
@@ -93,17 +103,25 @@ function handleYesClick() {
     }
 
     if (yesClickCount > 5) {
-        window.location.href = 'yes.html'
+        window.location.href = "yes.html"
     }
 }
 
 function showTeaseMessage(msg) {
-    let toast = document.getElementById('tease-toast')
+    let toast = document.getElementById("tease-toast")
     toast.textContent = msg
-    toast.classList.add('show')
+    toast.classList.add("show")
+
     clearTimeout(toast._timer)
-    toast._timer = setTimeout(() => toast.classList.remove('show'), 2500)
+    toast._timer = setTimeout(() => {
+        toast.classList.remove("show")
+    }, 2500)
 }
+
+
+/* ===============================
+   😈 NO BUTTON LOGIC
+================================= */
 
 function handleNoClick() {
     noClickCount++
@@ -111,14 +129,17 @@ function handleNoClick() {
     const msgIndex = Math.min(noClickCount, noMessages.length - 1)
     noBtn.textContent = noMessages[msgIndex]
 
+    // Make Yes button grow
     const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize)
     yesBtn.style.fontSize = `${currentSize * 1.35}px`
 
+    // Change GIF
     const gifIndex = Math.min(noClickCount, gifStages.length - 1)
     catGif.src = gifStages[gifIndex]
 
+    // Enable runaway mode
     if (noClickCount >= 5 && !runawayEnabled) {
-        noBtn.addEventListener('mouseover', runAway)
+        noBtn.addEventListener("mouseover", runAway)
         runawayEnabled = true
     }
 }
@@ -132,12 +153,16 @@ function runAway() {
     noBtn.style.top = Math.random() * maxY + "px"
 }
 
-/* LOVE POPUP */
+
+/* ===============================
+   💘 LOVE POPUP
+================================= */
 
 function showLovePopup() {
     const popup = document.createElement("div")
     popup.className = "love-popup"
     popup.textContent = "I love you too 💖😊💕"
+
     document.body.appendChild(popup)
 
     setTimeout(() => {
