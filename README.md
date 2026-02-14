@@ -1,107 +1,70 @@
-# Valentine's Day Interactive Page
+# 💘 Valentine's Interactive Surprise Page
 
-A fun, interactive Valentine's Day page where the "Yes" button grows bigger every time they click "No" — with falling hearts, cute GIFs, music, and playful toast messages. Built with pure HTML, CSS, and JavaScript.
+An engaging and playful Valentine's Day web experience where every "No" makes the "Yes" button grow bigger — because love deserves persistence 😄  
 
-**Live demo:** [sahilgogna.github.io/v-day](https://sahilgogna.github.io/v-day)
+This project includes animated falling hearts, dynamic button scaling, GIF transitions, background music, and fun toast messages — all built using pure front-end technologies.
 
-
----
-
-## Want to Use This to Impress Your GF/Wife?
-
-You've got three options — pick whatever works for you.
+Designed & Developed by **Saurabh Kumar Singh**
 
 ---
 
-### Option 1: Just Send the Link
+## 🌐 Live Preview
 
-No setup needed. Just send this link:
+👉 https://kumarsaurabhsingh.github.io/Valentines_Message/
 
-```
-https://sahilgogna.github.io/v-day
-```
-
-That's it. Done. You're welcome.
+(If it doesn’t load immediately, give GitHub Pages a minute after deployment.)
 
 ---
 
-### Option 2: Fork It and Make It Yours
+## ✨ What Makes This Fun?
 
-Want your own version you can customize? Follow these steps:
+- 💗 Interactive Yes/No logic
+- 📈 Dynamic button size manipulation
+- 🎞 Animated GIF transitions
+- 💬 Random playful toast messages
+- 🎵 Background romantic music
+- 💖 Falling hearts animation
+- 🎉 Celebration page after clicking "Yes"
 
-#### 1. Fork the Repo
-- Go to [github.com/SahilGogna/v-day](https://github.com/SahilGogna/v-day)
-- Click the **Fork** button in the top-right corner
-- This creates a copy of the repo under your GitHub account
-
-#### 2. Enable GitHub Pages
-- In your forked repo, go to **Settings** (the gear icon tab)
-- In the left sidebar, click **Pages**
-- Under **Source**, select **"Deploy from a branch"**
-- Under **Branch**, select **`main`** and **`/ (root)`**
-- Click **Save**
-
-#### 3. Wait ~2 Minutes
-- GitHub will build and deploy your site
-- Your site will be live at:
-  ```
-  https://yourusername.github.io/v-day
-  ```
-  (Replace `yourusername` with your actual GitHub username)
-
-#### 4. Personalize It
-- Edit `index.html` to change the question, title, or GIF
-- Edit `yes.html` to change the celebration page
-- Edit `script.js` to tweak the toast messages, button behavior, or GIF changes
-- Edit `style.css` to change colors, fonts, or animations
-- Swap out the music file in the `music/` folder with your own song
-
-> **Tip:** You can edit files directly on GitHub by clicking on a file and hitting the pencil (edit) icon. No need to clone anything locally if you just want quick changes.
+This project focuses on DOM manipulation, event handling, animation timing, and lightweight front-end logic without any frameworks.
 
 ---
 
-### Option 3: Vibe Code Your Own From Scratch
+## 🚀 How to Use It
 
-Want something completely unique? Use AI to build it.
-
-#### 1. Open Antigravity
-- Google **"anti gravity google"** or go to [antigravity.dev](https://www.antigravity.dev)
-- It has **Sonnet 4.6** built right in — no need to go anywhere else
-
-#### 2. Describe What You Want
-- Tell it exactly what you're imagining. Some ideas:
-  - Falling hearts animation with a love letter reveal
-  - Interactive story where they choose their adventure
-  - A countdown to Valentine's Day with daily messages
-  - A quiz about your relationship
-  - Whatever your heart desires — literally
-
-#### 3. Get the Code
-- Antigravity will generate the full HTML, CSS, and JavaScript for you
-- Copy the code into files on your computer
-
-#### 4. Deploy It
-- Create a new GitHub repository
-- Push your code to it
-- Enable GitHub Pages the same way as **Option 2** (Settings → Pages → Deploy from branch → main → root → Save)
-- Your custom creation goes live in ~2 minutes
+You have multiple ways to use this project depending on your goal.
 
 ---
 
-## Project Structure
+### Option 1 – Share It Instantly
 
-```
-v-day/
-├── index.html       # Main page — "Will you be my Valentine?"
-├── yes.html         # Celebration page after they say Yes
-├── script.js        # Main page logic (button growth, GIF swaps, toasts)
-├── yes-script.js    # Celebration page animations
-├── style.css        # All the styling and animations
-└── music/           # Background music
-```
+Just send this link:
+
+
+No setup required. Simple. Effective. Legendary move. 😎
 
 ---
 
-## License
+### Option 2 – Create Your Own Version
 
-Do whatever you want with it. Make someone smile.
+Want to personalize it? Follow these steps:
+
+#### 1️⃣ Fork the Repository
+Visit:
+https://github.com/KumarSaurabhSingh/Valentines_Message  
+
+Click **Fork** to create your own copy.
+
+---
+
+#### 2️⃣ Enable GitHub Pages
+- Open your forked repository
+- Go to **Settings → Pages**
+- Under "Source", select:
+  - Deploy from a branch
+  - Branch: `main`
+  - Folder: `/ (root)`
+- Click Save
+
+Within 1–2 minutes, your site will be live at:
+
