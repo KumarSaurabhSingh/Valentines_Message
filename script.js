@@ -28,8 +28,6 @@ const yesTeasePokes = [
   "Areee.. I love you too Sundari 😏"
 ];
 
-let yesTeasedCount = 0;
-let yesClickCount = 0;
 let noClickCount = 0;
 let runawayEnabled = false;
 let musicPlaying = true;
@@ -74,25 +72,9 @@ function toggleMusic() {
 }
 
 function handleYesClick() {
-  yesClickCount++;
-
-  if (!runawayEnabled) {
-    const msg =
-      yesTeasePokes[Math.min(yesTeasedCount, yesTeasePokes.length - 1)];
-    yesTeasedCount++;
-    showTeaseMessage(msg);
-    return;
-  }
-
-  if (yesClickCount === 5) {
-    showLovePopup();
-    return;
-  }
-
-  if (yesClickCount > 5) {
-    window.location.href = "yes.html";
-  }
+  showLovePopup();
 }
+
 
 function showTeaseMessage(msg) {
   let toast = document.getElementById("tease-toast");
