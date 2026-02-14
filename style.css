@@ -8,18 +8,27 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 /* ===============================
    Body
 ================================= */
 
 body {
-    background-color: #FFE4E8;
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+
+    overflow-x: hidden;
+    position: relative;
+
+    background-color: #FFE4E8;
 
     background-image:
         radial-gradient(circle at 15% 85%, #ffb3c1 0%, transparent 40%),
@@ -44,23 +53,26 @@ body {
     content: "💕 💗 💖 💝 💓";
     position: absolute;
     font-size: 1.5rem;
-    opacity: 0.15;
-    animation: floatHearts 12s linear infinite;
+    opacity: 0.12;
     white-space: nowrap;
+    animation: floatHearts 14s linear infinite;
     top: 100%;
+}
+
+.hearts-bg::before {
     left: 10%;
 }
 
 .hearts-bg::after {
-    animation-delay: 6s;
     left: 60%;
+    animation-delay: 7s;
     content: "💗 💕 💓 💖 💝";
 }
 
 @keyframes floatHearts {
     from {
         transform: translateY(0);
-        opacity: 0.15;
+        opacity: 0.12;
     }
     to {
         transform: translateY(-110vh);
@@ -74,17 +86,31 @@ body {
 
 .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 30px;
+
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+
+    max-width: 420px;
+    width: 90%;
 }
 
+/* ===============================
+   Title
+================================= */
+
 h1 {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     color: #d63384;
     font-weight: 900;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
+    text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.15);
     animation: wiggle 2s ease-in-out infinite;
 }
 
@@ -130,19 +156,17 @@ h1 {
     background: linear-gradient(135deg, #4CAF50, #45a049);
     color: white;
     border: none;
-    border-radius: 16px;
-    font-size: 1.6rem;
+    border-radius: 18px;
+    font-size: 1.5rem;
     font-weight: 900;
     padding: 18px 45px;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.45);
-    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 22px rgba(76, 175, 80, 0.45);
 }
 
 #yes-btn:hover {
-    transform: scale(1.06) translateY(-2px);
-    box-shadow: 0 10px 28px rgba(76, 175, 80, 0.55);
+    transform: scale(1.08) translateY(-2px);
 }
 
 #yes-btn:active {
@@ -155,17 +179,17 @@ h1 {
     background: linear-gradient(135deg, #e74c3c, #c0392b);
     color: white;
     border: none;
-    border-radius: 12px;
+    border-radius: 14px;
     font-size: 1rem;
     font-weight: 700;
     padding: 12px 28px;
     cursor: pointer;
-    transition: background 0.2s, left 0.25s ease, top 0.25s ease;
-    box-shadow: 0 4px 14px rgba(231, 76, 60, 0.4);
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 14px rgba(231, 76, 60, 0.4);
 }
 
 #no-btn:hover {
-    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: scale(1.05);
 }
 
 /* ===============================
@@ -173,14 +197,14 @@ h1 {
 ================================= */
 
 #tease-toast {
-    margin-top: 14px;
+    margin-top: 16px;
     font-size: 1rem;
     color: #d63384;
     font-weight: 700;
     font-style: italic;
     opacity: 0;
     transform: translateY(6px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
     min-height: 1.5rem;
 }
 
@@ -197,11 +221,11 @@ h1 {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     border: none;
     border-radius: 50%;
-    width: 52px;
-    height: 52px;
+    width: 54px;
+    height: 54px;
     font-size: 1.4rem;
     cursor: pointer;
     backdrop-filter: blur(10px);
@@ -219,8 +243,8 @@ h1 {
 ================================= */
 
 .yes-container h1.yes-title {
-    font-size: 2.8rem;
-    animation: bounceTitle 0.6s ease infinite alternate;
+    font-size: 2.6rem;
+    animation: bounceTitle 0.7s ease infinite alternate;
 }
 
 @keyframes bounceTitle {
@@ -233,7 +257,7 @@ h1 {
 }
 
 .yes-message {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #e91e8c;
     font-weight: 700;
     margin-top: 24px;
@@ -243,7 +267,7 @@ h1 {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(12px);
     }
     to {
         opacity: 1;
@@ -254,4 +278,30 @@ h1 {
 .yes-container #cat-gif {
     width: 260px;
     height: 260px;
+}
+
+/* ===============================
+   Responsive
+================================= */
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    #cat-gif {
+        width: 160px;
+        height: 160px;
+    }
+
+    #yes-btn {
+        font-size: 1.2rem;
+        padding: 14px 30px;
+    }
+
+    #no-btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
 }
