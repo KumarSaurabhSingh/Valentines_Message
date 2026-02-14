@@ -2,34 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will you be my Valentine? 💕</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- 💖 INTRO SCREEN -->
+    <div id="intro-screen">
+        <div class="intro-content">
+            <h1>For Someone Special 💕</h1>
+            <p>Tap anywhere to enter</p>
+        </div>
+    </div>
+
     <div class="hearts-bg"></div>
 
     <div class="container">
         <h1>Meri Valentine Banogi Jii Aap? 💕</h1>
 
         <div class="gif-container">
-            <img id="cat-gif" src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif" alt="cute character">
+            <img id="cat-gif"
+                src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif">
         </div>
 
         <div class="buttons">
             <button id="yes-btn" onclick="handleYesClick()">Han Jii</button>
             <button id="no-btn" onclick="handleNoClick()">Nah Jii</button>
         </div>
+
         <div id="tease-toast"></div>
     </div>
 
-    <audio id="bg-music" loop autoplay muted>
+    <audio id="bg-music" loop>
         <source src="music/Edd-Sheeran-Perfect-mp3pm.mp3" type="audio/mpeg">
     </audio>
 
-    <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">🔊</button>
+    <button id="music-toggle" onclick="toggleMusic()">🔊</button>
 
     <script src="script.js"></script>
 </body>

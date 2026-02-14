@@ -1,3 +1,43 @@
+/* ===============================
+   💖 INTRO SCREEN + MUSIC START
+================================= */
+
+const introScreen = document.getElementById("intro-screen")
+const music = document.getElementById("bg-music")
+const musicToggle = document.getElementById("music-toggle")
+
+let musicPlaying = false
+
+introScreen.addEventListener("click", () => {
+    introScreen.classList.add("fade-out")
+
+    setTimeout(() => {
+        introScreen.style.display = "none"
+    }, 800)
+
+    music.volume = 0.3
+    music.play().then(() => {
+        musicPlaying = true
+        musicToggle.textContent = "🔊"
+    }).catch(() => {})
+})
+
+function toggleMusic() {
+    if (musicPlaying) {
+        music.pause()
+        musicPlaying = false
+        musicToggle.textContent = "🔇"
+    } else {
+        music.play()
+        musicPlaying = true
+        musicToggle.textContent = "🔊"
+    }
+}
+
+/* ===============================
+   💕 ORIGINAL GAME LOGIC
+================================= */
+
 const gifStages = [
     "https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif",
     "https://media1.tenor.com/m/uDugCXK4vI4AAAAd/chiikawa-hachiware.gif",
@@ -32,38 +72,10 @@ let yesTeasedCount = 0
 let yesClickCount = 0
 let noClickCount = 0
 let runawayEnabled = false
-let musicPlaying = true
 
 const catGif = document.getElementById('cat-gif')
 const yesBtn = document.getElementById('yes-btn')
 const noBtn = document.getElementById('no-btn')
-const music = document.getElementById('bg-music')
-
-// Autoplay handling
-music.muted = true
-music.volume = 0.3
-
-music.play().then(() => {
-    music.muted = false
-}).catch(() => {
-    document.addEventListener('click', () => {
-        music.muted = false
-        music.play().catch(() => {})
-    }, { once: true })
-})
-
-function toggleMusic() {
-    if (musicPlaying) {
-        music.pause()
-        musicPlaying = false
-        document.getElementById('music-toggle').textContent = '🔇'
-    } else {
-        music.muted = false
-        music.play()
-        musicPlaying = true
-        document.getElementById('music-toggle').textContent = '🔊'
-    }
-}
 
 function handleYesClick() {
     yesClickCount++
@@ -102,114 +114,33 @@ function handleNoClick() {
     const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize)
     yesBtn.style.fontSize = `${currentSize * 1.35}px`
 
-    const padY = Math.min(18 + noClickCount * 5, 60)
-    const padX = Math.min(45 + noClickCount * 10, 120)
-    yesBtn.style.padding = `${padY}px ${padX}px`
-
-    if (noClickCount >= 2) {
-        const noSize = parseFloat(window.getComputedStyle(noBtn).fontSize)
-        noBtn.style.fontSize = `${Math.max(noSize * 0.85, 10)}px`
-    }
-
     const gifIndex = Math.min(noClickCount, gifStages.length - 1)
-    swapGif(gifStages[gifIndex])
+    catGif.src = gifStages[gifIndex]
 
     if (noClickCount >= 5 && !runawayEnabled) {
-        enableRunaway()
+        noBtn.addEventListener('mouseover', runAway)
         runawayEnabled = true
     }
 }
 
-function swapGif(src) {
-    catGif.style.opacity = '0'
-    setTimeout(() => {
-        catGif.src = src
-        catGif.style.opacity = '1'
-    }, 200)
-}
-
-function enableRunaway() {
-    noBtn.addEventListener('mouseover', runAway)
-    noBtn.addEventListener('touchstart', runAway, { passive: true })
-}
-
 function runAway() {
-    const margin = 20
-    const btnW = noBtn.offsetWidth
-    const btnH = noBtn.offsetHeight
-    const maxX = window.innerWidth - btnW - margin
-    const maxY = window.innerHeight - btnH - margin
+    const maxX = window.innerWidth - noBtn.offsetWidth
+    const maxY = window.innerHeight - noBtn.offsetHeight
 
-    const randomX = Math.random() * maxX + margin / 2
-    const randomY = Math.random() * maxY + margin / 2
-
-    noBtn.style.position = 'fixed'
-    noBtn.style.left = `${randomX}px`
-    noBtn.style.top = `${randomY}px`
-    noBtn.style.zIndex = '50'
+    noBtn.style.position = "fixed"
+    noBtn.style.left = Math.random() * maxX + "px"
+    noBtn.style.top = Math.random() * maxY + "px"
 }
 
-/* 💖 LOVE POPUP + HEART BURST */
+/* LOVE POPUP */
 
 function showLovePopup() {
     const popup = document.createElement("div")
+    popup.className = "love-popup"
     popup.textContent = "I love you too 💖😊💕"
-
-    popup.style.position = "fixed"
-    popup.style.top = "50%"
-    popup.style.left = "50%"
-    popup.style.transform = "translate(-50%, -50%) scale(0)"
-    popup.style.background = "linear-gradient(135deg, #ff4d6d, #ff99c8)"
-    popup.style.color = "white"
-    popup.style.padding = "25px 40px"
-    popup.style.borderRadius = "20px"
-    popup.style.fontSize = "28px"
-    popup.style.fontWeight = "bold"
-    popup.style.boxShadow = "0 15px 35px rgba(0,0,0,0.3)"
-    popup.style.zIndex = "9999"
-    popup.style.transition = "all 0.4s ease"
-
     document.body.appendChild(popup)
-
-    setTimeout(() => {
-        popup.style.transform = "translate(-50%, -50%) scale(1.2)"
-    }, 100)
-
-    setTimeout(() => {
-        popup.style.transform = "translate(-50%, -50%) scale(1)"
-    }, 300)
-
-    createHeartBurst()
 
     setTimeout(() => {
         window.location.href = "yes.html"
     }, 3000)
-}
-
-function createHeartBurst() {
-    for (let i = 0; i < 20; i++) {
-        const heart = document.createElement("div")
-        heart.textContent = "💖"
-        heart.style.position = "fixed"
-        heart.style.left = "50%"
-        heart.style.top = "50%"
-        heart.style.fontSize = "24px"
-        heart.style.pointerEvents = "none"
-        heart.style.zIndex = "9998"
-
-        document.body.appendChild(heart)
-
-        const randomX = (Math.random() - 0.5) * 500
-        const randomY = (Math.random() - 0.5) * 500
-
-        heart.animate([
-            { transform: "translate(-50%, -50%) scale(1)", opacity: 1 },
-            { transform: `translate(${randomX}px, ${randomY}px) scale(1.5)`, opacity: 0 }
-        ], {
-            duration: 1500,
-            easing: "ease-out"
-        })
-
-        setTimeout(() => heart.remove(), 1500)
-    }
 }
