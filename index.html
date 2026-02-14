@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Will you be my Valentine? 💕</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Will you be my Valentine? 💕</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Main Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+    <!-- Background Hearts -->
     <div class="hearts-bg"></div>
 
+    <!-- Main Container -->
     <div class="container">
         <h1>Meri Valentine Banogi Jii Aap? 💕</h1>
 
         <div class="gif-container">
-            <img id="cat-gif"
-                src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif">
+            <img 
+                id="cat-gif"
+                src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif"
+                alt="Cute character"
+            >
         </div>
 
         <div class="buttons">
@@ -27,12 +40,23 @@
         <div id="tease-toast"></div>
     </div>
 
-    <audio id="bg-music" loop>
+    <!-- Background Music -->
+    <audio id="bg-music" loop autoplay muted>
         <source src="music/Edd-Sheeran-Perfect-mp3pm.mp3" type="audio/mpeg">
     </audio>
 
-    <button id="music-toggle" onclick="toggleMusic()">🔊</button>
+    <!-- Music Toggle Button -->
+    <button 
+        id="music-toggle"
+        onclick="toggleMusic()"
+        title="Toggle music"
+    >
+        🔊
+    </button>
 
+    <!-- Main Script -->
     <script src="script.js"></script>
+
 </body>
+
 </html>
